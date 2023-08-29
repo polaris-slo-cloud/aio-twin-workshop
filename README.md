@@ -23,6 +23,6 @@ Before starting the tutorial, please clone this repository and install the [prer
     cd aio-twin-workshop
     ```
 
-3. Continue with the tutorial to implement [custom horizontal elasticity strategy](./01-custom-horizontal-estrat.md).
+3. Continue with the tutorial to implement [custom horizontal elasticity strategy](./01-horizontal-elasticity-strategy.md).
 
 4. Implement and configure an [Average CPU Usage SLO](./02-avg-cpu-slo.md) for a workload.
