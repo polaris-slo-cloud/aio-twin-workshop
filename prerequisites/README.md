@@ -26,9 +26,9 @@ Please install the following software:
 
 This workshop uses the Kubernetes [resource-consumer](https://github.com/kubernetes/kubernetes/tree/master/test/images/resource-consumer) as the target workload. To deploy it, open a terminal in the dev container run the following command:
 
-    ```sh
-    kubectl apply -f ./prerequisites/resource-consumer.yaml
-    ```
+```sh
+kubectl apply -f ./prerequisites/resource-consumer.yaml
+```
 
 
 
@@ -110,31 +110,31 @@ This may take a few minutes.
 
 This workshop uses the Kubernetes [resource-consumer](https://github.com/kubernetes/kubernetes/tree/master/test/images/resource-consumer) as the target workload. To deploy it, run the following command in a terminal in this folder:
 
-    ```sh
-    kubectl apply -f ./resource-consumer.yaml
-    ```
+```sh
+kubectl apply -f ./resource-consumer.yaml
+```
 
 
 ### 4. Stopping and Deleting the Cluster
 
 To temporarily stop the minikube cluster, run the following:
 
-    ```sh
-    minikube stop
-    ```
+```sh
+minikube stop
+```
 
 You can resume the cluster operation using:
 
-    ```sh
-    minikube start
+```sh
+minikube start
 
-    # Wait for all pods to be running again
-    watch kubectl get pods -A
-    ```
+# Wait for all pods to be running again
+watch kubectl get pods -A
+```
 
 To delete the cluster, run:
 
-    ```sh
-    minikube stop
-    minikube delete
-    ```
+```sh
+minikube stop
+minikube delete
+```
