@@ -16,16 +16,16 @@
 			"minikube": "latest"
 		},
 		"ghcr.io/devcontainers-contrib/features/curl-apt-get:1": {}
-	}
+	},
 	
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
-	// "postCreateCommand": "kubectl version",
+	"postCreateCommand": "bash -c './.devcontainer/init-cluster.sh'",
 
 	// Use 'postStartCommand' to run commands after the container is created like starting minikube.
-	// "postStartCommand": "nohup bash -c 'minikube start &' > minikube.log 2>&1",
+	"postStartCommand": "minikube start"
 
 	// Configure tool-specific properties.
 	// "customizations": {},

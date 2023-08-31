@@ -19,8 +19,8 @@ Before starting the tutorial, please clone this repository and install the [prer
 2. Create a new workspace using the CLI:
 
     ```sh
-    polaris-cli init aio-twin-workshop
-    cd aio-twin-workshop
+    polaris-cli init workshop
+    cd workshop
     ```
 
 3. Continue with the tutorial to implement [custom horizontal elasticity strategy](./01-horizontal-elasticity-strategy.md).

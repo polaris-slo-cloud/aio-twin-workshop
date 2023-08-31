@@ -1,6 +1,40 @@
 # Prerequisites
 
-To follow the coding examples in the workshop, please install the following software:
+To follow the coding examples in the workshop, you can either use a [Visual Studio Code Dev Container](https://code.visualstudio.com/docs/devcontainers/containers), which will run an embedded Kubernetes cluster, or you can install the softare locally.
+
+## Option A: VS Code Dev Container
+
+Please install the following software:
+
+* [Docker](https://www.docker.com)
+* [Visual Studio Code](https://code.visualstudio.com)
+* [VS Code Dev Containers Extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)
+
+
+### 1. Start the Dev Container
+
+1. After cloning this repository, open it is Visual Studio code.
+
+2. A notification should appear, asking if you want to "Reopen Dev Container". Click on that button to reopen the workspace in a dev container. If the notification does not appear, press F1 and search for "Dev Containers: Reopen in Container".
+
+3. Building the container image and starting the container takes several minutes. It involves pulling various container images, starting a Minikube Kubernetes cluster and installing Prometheus in it. You can open the log to see the current progress.
+
+4. Once the setup has completed, you can start working. To stop the container, simply close VS Code and the container will stop a few seconds later.
+
+
+### 2. Deploy the Test Workload
+
+This workshop uses the Kubernetes [resource-consumer](https://github.com/kubernetes/kubernetes/tree/master/test/images/resource-consumer) as the target workload. To deploy it, open a terminal in the dev container run the following command:
+
+    ```sh
+    kubectl apply -f ./prerequisites/resource-consumer.yaml
+    ```
+
+
+
+## Option B: Local Setup
+
+Please install the following software:
 
 * [Docker](https://www.docker.com)
 * [Node.JS](https://nodejs.org) v18 or higher
@@ -9,7 +43,7 @@ To follow the coding examples in the workshop, please install the following soft
 * [helm](https://helm.sh/docs/intro/install/)
 
 
-## 1. Set up a Local Kubernetes Cluster
+### 1. Set up a Local Kubernetes Cluster
 
 1. Configure minikube to use 4 CPUs and 4 GB of RAM for the cluster node.
 Minikube offers various methods fro creating a node, called [drivers](https://minikube.sigs.k8s.io/docs/drivers/).
@@ -34,7 +68,7 @@ The following snippet assumes that you are using Docker as the driver, but you m
     ```
 
 
-## 2. Install Prometheus
+### 2. Install Prometheus
 
 1. Add the [Prometheus helm chart](https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack) repository to your helm configuration:
 
@@ -72,7 +106,7 @@ This may take a few minutes.
     ```
 
 
-## 3. Deploy the Test Workload
+### 3. Deploy the Test Workload
 
 This workshop uses the Kubernetes [resource-consumer](https://github.com/kubernetes/kubernetes/tree/master/test/images/resource-consumer) as the target workload. To deploy it, run the following command in a terminal in this folder:
 
@@ -81,7 +115,7 @@ This workshop uses the Kubernetes [resource-consumer](https://github.com/kuberne
     ```
 
 
-## 4. Stopping and Deleting the Cluster
+### 4. Stopping and Deleting the Cluster
 
 To temporarily stop the minikube cluster, run the following:
 
