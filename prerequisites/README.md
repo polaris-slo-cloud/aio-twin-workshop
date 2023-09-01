@@ -2,6 +2,12 @@
 
 To follow the coding examples in the workshop, you can either use a [Visual Studio Code Dev Container](https://code.visualstudio.com/docs/devcontainers/containers), which will run an embedded Kubernetes cluster, or you can install the softare locally.
 
+The minimum hardware requirements for the tutorial are:
+
+* Quad-core CPU
+* 8 GB of RAM
+
+
 ## Option A: VS Code Dev Container
 
 Please install the following software:
