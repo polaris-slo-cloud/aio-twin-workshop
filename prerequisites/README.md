@@ -15,7 +15,7 @@ Please install the following software:
 
 1. After cloning this repository, open it is Visual Studio code.
 
-2. A notification should appear, asking if you want to "Reopen Dev Container". Click on that button to reopen the workspace in a dev container. If the notification does not appear, press F1 and search for "Dev Containers: Reopen in Container".
+2. A notification should appear, asking if you want to "Reopen in Container". Click on that button to reopen the workspace in a dev container. If the notification does not appear, press F1 and search for "Dev Containers: Reopen in Container".
 
 3. Building the container image and starting the container takes several minutes. It involves pulling various container images, starting a Minikube Kubernetes cluster and installing Prometheus in it. You can open the log to see the current progress.
 
