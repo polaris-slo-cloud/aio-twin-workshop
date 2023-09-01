@@ -25,7 +25,7 @@
 	"postCreateCommand": "bash -c './.devcontainer/init-cluster.sh'",
 
 	// Use 'postStartCommand' to run commands after the container is created like starting minikube.
-	"postStartCommand": "minikube start"
+	"postStartCommand": "minikube status || minikube start"
 
 	// Configure tool-specific properties.
 	// "customizations": {},
