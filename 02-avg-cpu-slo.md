@@ -155,8 +155,8 @@ The following PromQL query calculates the average CPU usage in millicores across
         # CPU Usage of a single container in a pod.
         rate(
         container_cpu_usage_seconds_total{
-            namespace="default", pod=~"resource-consumer-.*", container!=""
-          }[40s]
+            namespace="default", pod=~"resource-consumer-.*"
+          }[70s]
         )
       ) by (pod)
     )
@@ -187,7 +187,7 @@ The following PromQL query calculates the average CPU usage in millicores across
         .select<number>(
           'container',
           'cpu_usage_seconds_total',
-          TimeRange.fromDuration(Duration.fromSeconds(40)),
+          TimeRange.fromDuration(Duration.fromSeconds(70)),
         )
         .filterOnLabel(
           LabelFilters.equal(
@@ -196,7 +196,6 @@ The following PromQL query calculates the average CPU usage in millicores across
           ),
         )
         .filterOnLabel(LabelFilters.regex('pod', `${sloTarget.name}-.*`))
-        .filterOnLabel(LabelFilters.notEqual('container', ''))
         .rate()
         .sumByGroup(LabelGrouping.by('pod'))
         .averageByGroup();
@@ -322,7 +321,7 @@ When changing the tag here, we also need to change the image name in `apps/avera
           name: 'resource-consumer',
         }),
         // We want to do horizontal scaling.
-        elasticityStrategy: new HorizontalElasticityStrategyKind(),
+        elasticityStrategy: new MyHorizontalElasticityStrategyKind(),
         sloConfig: {
           // We aim for 70% average CPU usage.
           averageCpuTarget: 70,
