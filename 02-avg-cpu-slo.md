@@ -18,7 +18,7 @@ To this end, add the `--createLibProject=true` parameter and specify the import 
     ```
 
 
-1. Launch your favorite IDE or editor and open the file [`libs/myslos/src/lib/slo-mappings/average-cpu-usage.slo-mapping.prm.ts`](./libs/myslos/src/lib/slo-mappings/average-cpu-usage.slo-mapping.prm.ts) (`.prm` stands for Polaris Resource Model), which contains three types:
+1. Launch your favorite IDE or editor and open the file `libs/myslos/src/lib/slo-mappings/average-cpu-usage.slo-mapping.prm.ts` (`.prm` stands for Polaris Resource Model), which contains three types:
     * `AverageCpuUsageSloConfig` models the configuration options of the SLO. Add the following properties here:
         ```TypeScript
         /**
@@ -54,7 +54,7 @@ To this end, add the `--createLibProject=true` parameter and specify the import 
         ```
 
 
-1. The file [`libs/myslos/src/lib/init-polaris-lib.ts`](./libs/myslos/src/lib/init-polaris-lib.ts) contains the initialization function for your library, `initPolarisLib(polarisRuntime: PolarisRuntime)`, which has to register the object kind of our SLO mapping type and associate it with the SLO mapping type class in [transformation service](https://polaris-slo-cloud.github.io/polaris-slo-framework/typedoc/interfaces/core_src.PolarisTransformationService.html) of the Polaris runtime.
+1. The file `libs/myslos/src/lib/init-polaris-lib.ts` contains the initialization function for your library, `initPolarisLib(polarisRuntime: PolarisRuntime)`, which has to register the object kind of our SLO mapping type and associate it with the SLO mapping type class in [transformation service](https://polaris-slo-cloud.github.io/polaris-slo-framework/typedoc/interfaces/core_src.PolarisTransformationService.html) of the Polaris runtime.
 Since we generated a new library project, this step has already been done by the Polaris CLI.
 If we had added the SLO mapping type to an existing project, we would need to perform this registration manually (this will be handled automatically by the Polaris CLI in the future):
 
@@ -92,13 +92,13 @@ Polaris CLI automatically adds and configures the `@polaris-sloc/kubernetes` and
 
 
 1. The generated SLO controller project includes the following:
-    * [`src/main.ts`](./apps/average-cpu-usage-slo-controller/src/main.ts) bootstraps the controller application by initializing the Polaris runtime with the Kubernetes library, configuring the Prometheus library as a metrics query backend, initializing the `@my-org/my-slos` library, registering the average CPU usage SLO mapping with the control loop and the watch manager, and starting the control loop.
-    * [`src/app/slo/average-cpu-usage.controller.ts`](./apps/average-cpu-usage-slo-controller/src/app/slo/average-cpu-usage.controller.ts) contains the `AverageCpuUsageSlo` class that will act as the microcontroller for evaluating our SLO.
-    * [`Dockerfile`](./apps/average-cpu-usage-slo-controller/Dockerfile) for building a container image of the controller
-    * [`manifests/kubernetes`](./apps/average-cpu-usage-slo-controller/manifests) contains configuration YAML files for setting up and deploying the controller on Kubernetes.
+    * `src/main.ts` bootstraps the controller application by initializing the Polaris runtime with the Kubernetes library, configuring the Prometheus library as a metrics query backend, initializing the `@my-org/my-slos` library, registering the average CPU usage SLO mapping with the control loop and the watch manager, and starting the control loop.
+    * `src/app/slo/average-cpu-usage.controller.ts` contains the `AverageCpuUsageSlo` class that will act as the microcontroller for evaluating our SLO.
+    * `Dockerfile` for building a container image of the controller
+    * `manifests/kubernetes` contains configuration YAML files for setting up and deploying the controller on Kubernetes.
 
 
-1. Next, we implement the `AverageCpuUsageSlo` in [`apps/average-cpu-usage-slo-controller/src/app/slo/average-cpu-usage.controller.ts`](./apps/average-cpu-usage-slo-controller/src/app/slo/average-cpu-usage.controller.ts).
+1. Next, we implement the `AverageCpuUsageSlo` in `apps/average-cpu-usage-slo-controller/src/app/slo/average-cpu-usage.controller.ts`.
 First we need to complete the `configure()` method.
 This method is called by the Polaris SLO control loop after instantiating the class for a new or changed SLO Mapping.
 It is used to store the configuration information in the class instance.
@@ -250,8 +250,8 @@ The following PromQL query calculates the average CPU usage in millicores across
 1. Since Polaris CLI has generated a Dockerfile for us, we can easily build the container image for our SLO controller.
 For this tutorial, we will load the image directly into minikube.
 Alternatively, we could adjust the tag of the image and push it to Dockerhub.
-The tags for the image can be adjusted in the build command in [`apps/average-cpu-usage-slo-controller/project.json`](./apps/average-cpu-usage-slo-controller/project.json) `targets.docker-build.options.commands` (the user friendliness of this step will be improved in the future).
-When changing the tag here, we also need to change the image name in [`apps/average-cpu-usage-slo-controller/manifests/kubernetes/2-slo-controller.yaml`](./apps/average-cpu-usage-slo-controller/manifests/kubernetes/2-slo-controller.yaml)
+The tags for the image can be adjusted in the build command in `apps/average-cpu-usage-slo-controller/project.json` `targets.docker-build.options.commands` (the user friendliness of this step will be improved in the future).
+When changing the tag here, we also need to change the image name in `apps/average-cpu-usage-slo-controller/manifests/kubernetes/2-slo-controller.yaml`.
 
     ```JSON
     "commands": [
@@ -268,7 +268,7 @@ When changing the tag here, we also need to change the image name in [`apps/aver
     ```
 
 
-1. If our Prometheus instance is not reachable under the DNS name `prometheus-kube-prometheus-prometheus.monitoring.svc` or on port `9090` (defaults for our [testbed setup](https://github.com/polaris-slo-cloud/polaris-slo-framework/tree/master/testbeds/kubernetes)), we need to change the `PROMETHEUS_HOST` and/or `PROMETHEUS_PORT` environment variables in [`apps/average-cpu-usage-slo-controller/manifests/kubernetes/2-slo-controller.yaml`](./apps/average-cpu-usage-slo-controller/manifests/kubernetes/2-slo-controller.yaml).
+1. If our Prometheus instance is not reachable under the DNS name `prometheus-kube-prometheus-prometheus.monitoring.svc` or on port `9090` (defaults for our testbed setup), we need to change the `PROMETHEUS_HOST` and/or `PROMETHEUS_PORT` environment variables in `apps/average-cpu-usage-slo-controller/manifests/kubernetes/2-slo-controller.yaml`.
 
     ```YAML
     env:
@@ -304,7 +304,7 @@ When changing the tag here, we also need to change the image name in [`apps/aver
     ```
 
 
-1. Open the generated file [`slo-mappings/demo-mapping.ts`](./slo-mappings/demo-mapping.ts) and configure it for the resource-consumer deployment.
+1. Open the generated file `slo-mappings/demo-mapping.ts` and configure it for the resource-consumer deployment.
 
     ```TypeScript
     export default new AverageCpuUsageSloMapping({

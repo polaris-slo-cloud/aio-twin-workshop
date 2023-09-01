@@ -15,7 +15,6 @@ To this end, add the `--createLibProject=true` parameter and specify the import 
     # This generates the project libs/mystrategies
     polaris-cli g elasticity-strategy my-horizontal-elasticity-strategy --project=mystrategies --createLibProject=true --importPath=@my-org/my-strategies
     ```
-    See the changes [here](https://github.com/polaris-slo-cloud/polaris-demos/commit/1715b8c5de5185561cf4812575aa4f9f12ae4c45).
 
 
 1. Launch your favorite IDE or editor and open the file `libs/mystrategies/src/lib/elasticity/my-horizontal-elasticity-strategy.prm.ts` (`.prm` stands for Polaris Resource Model).
@@ -55,8 +54,6 @@ It contains a list of ToDos and three types:
     It takes three generic type parameters: i) the elasticity strategy's input data type, ii) the supported workload type, and iii) the data type that defines the strategy's configuration.
     The first two must match those of `MyHorizontalElasticityStrategyKind` and the third one refers to the `MyHorizontalElasticityStrategyConfig` interface that was generated.
 
-    See the changes [here](https://github.com/polaris-slo-cloud/polaris-demos/commit/4cf5876b341942441c28e404e46613b24ede2b0b).
-
 
 1. The file `libs/mystrategies/src/lib/init-polaris-lib.ts` contains the initialization function for your library, `initPolarisLib(polarisRuntime: PolarisRuntime)`, which has to register the object kind of our elasticity strategy and associate it with the elasticity strategy class in [transformation service](https://polaris-slo-cloud.github.io/polaris-slo-framework/typedoc/interfaces/core_src.PolarisTransformationService.html) of the Polaris runtime.
 Since we generated a new library project, this step has already been done by the Polaris CLI.
@@ -77,7 +74,6 @@ We can do this executing the following command:
     # Generate the CRDs of the project `mystrategies` in the folder `libs/mystrategies/crds`.
     polaris-cli gen-crds mystrategies
     ```
-    See the changes [here](https://github.com/polaris-slo-cloud/polaris-demos/commit/5d7469f7a94f4162e671157625adb1f3af3a475b).
 
 
 
@@ -92,7 +88,6 @@ Polaris CLI automatically adds and configures the `@polaris-sloc/kubernetes` pac
     # Generate an elasticity strategy controller project for the MyHorizontalElasticityStrategy in apps/my-horizontal-elasticity-strategy-controller
     polaris-cli g elasticity-strategy-controller my-horizontal-elasticity-strategy-controller --eStratTypePkg=@my-org/my-strategies --eStratType=MyHorizontalElasticityStrategy
     ```
-    See the changes [here](https://github.com/polaris-slo-cloud/polaris-demos/commit/e8f2b9846e0d31750d690c78c2c1f05a0e7e1ed9).
 
 
 1. The generated elasticity strategy controller project includes the following:
@@ -141,7 +136,6 @@ Thus, we can delete most of the boilerplate code and extend the `HorizontalElast
         return Promise.resolve(newScale);
     }
     ```
-    See the changes [here](https://github.com/polaris-slo-cloud/polaris-demos/commit/).
 
 
 
